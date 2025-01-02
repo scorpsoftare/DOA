@@ -1,0 +1,109 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "DEAD OR ALIVE",
+    Icon = 76514024748649,
+    LoadingTitle = "DEATH OR ALIVE [UNIVERSAL]",
+    LoadingSubtitle = "by scorp",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = nil,
+        FileName = "Big Hub"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true
+    },
+    KeySystem = true,
+    KeySettings = {
+        Title = "Key system",
+        Subtitle = "Dead or alive key system",
+        Note = "Key in telegram @scorpbf",
+        FileName = "Key",
+        SaveKey = true,
+        GrabKeyFromSite = false,
+        Key = {"doa_134","doa_135","doa_175","doa_762"}
+    }
+})
+
+-- Создание вкладок
+local InfoTab = Window:CreateTab("Info", 4483362458)
+local PlayerTab = Window:CreateTab("Player", 4483362458)
+local ScriptsTab = Window:CreateTab("Scripts", 4483362458)
+
+-- Контент вкладки Info
+InfoTab:CreateLabel("Welcome to the DEAD OR ALIVE Hub!")
+
+InfoTab:CreateButton({
+    Name = "Copy Telegram Link",
+    Callback = function()
+        setclipboard("https://t.me/scorpbf")
+        Rayfield:Notify({
+            Title = "Link Copied",
+            Content = "The Telegram link has been copied to your clipboard!",
+            Duration = 3
+        })
+    end,
+})
+
+-- Контент вкладки Player
+PlayerTab:CreateSlider({
+    Name = "WalkSpeed",
+    Range = {1, 1000},
+    Increment = 1,
+    Suffix = "Speed",
+    CurrentValue = 10,
+    Flag = "Slider1",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end,
+})
+
+PlayerTab:CreateSlider({
+    Name = "Dash Length",
+    Range = {10, 1000},
+    Increment = 1,
+    Suffix = "Length",
+    CurrentValue = 10,
+    Flag = "Slider2",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character:SetAttribute("DashLength", Value)
+    end,
+})
+
+PlayerTab:CreateSlider({
+    Name = "Jump Height",
+    Range = {10, 500},
+    Increment = 1,
+    Suffix = "Height",
+    CurrentValue = 10,
+    Flag = "Slider3",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+    end,
+})
+
+-- Контент вкладки Scripts
+ScriptsTab:CreateLabel("Choose a script to execute")
+
+ScriptsTab:CreateButton({
+    Name = "Fly GUI",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scorpsoftare/flyguibyscorp/refs/heads/main/flyguibyscorp"))()
+    end,
+})
+
+ScriptsTab:CreateButton({
+    Name = "R4D Brookhaven",
+    Callback = function()
+        loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-R4D-Leak-12773"))()
+    end,
+})
+
+ScriptsTab:CreateButton({
+    Name = "BTools Script",
+    Callback = function()
+        loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-BTools-12430"))()
+    end,
+})
