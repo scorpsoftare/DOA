@@ -1,4 +1,4 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()  
 
 local Window = Rayfield:CreateWindow({
     Name = "DEAD OR ALIVE",
@@ -23,7 +23,7 @@ local Window = Rayfield:CreateWindow({
         FileName = "Key",
         SaveKey = true,
         GrabKeyFromSite = false,
-        Key = {"doa_134","doa_135","doa_175","doa_762"}
+        Key = {"doa_134", "doa_135", "doa_175", "doa_762"}
     }
 })
 
@@ -31,10 +31,10 @@ local Window = Rayfield:CreateWindow({
 local InfoTab = Window:CreateTab("Info", 4483362458)
 local PlayerTab = Window:CreateTab("Player", 4483362458)
 local ScriptsTab = Window:CreateTab("Scripts", 4483362458)
+local SoundsTab = Window:CreateTab("Sounds", 4483362458) -- Раздел Sounds
 
 -- Контент вкладки Info
 InfoTab:CreateLabel("Welcome to the DEAD OR ALIVE Hub!")
-
 InfoTab:CreateButton({
     Name = "Copy Telegram Link",
     Callback = function()
@@ -59,7 +59,6 @@ PlayerTab:CreateSlider({
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
     end,
 })
-
 PlayerTab:CreateSlider({
     Name = "Dash Length",
     Range = {10, 1000},
@@ -71,7 +70,6 @@ PlayerTab:CreateSlider({
         game.Players.LocalPlayer.Character:SetAttribute("DashLength", Value)
     end,
 })
-
 PlayerTab:CreateSlider({
     Name = "Jump Height",
     Range = {10, 500},
@@ -83,35 +81,50 @@ PlayerTab:CreateSlider({
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
     end,
 })
+PlayerTab:CreateButton({
+    Name = "SPIN ALL PLAYERS",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scorpsoftare/DOASPIN/refs/heads/main/DOASPIN"))()
+    end,
+})
 
 -- Контент вкладки Scripts
 ScriptsTab:CreateLabel("Choose a script to execute")
-
 ScriptsTab:CreateButton({
     Name = "Fly GUI",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/scorpsoftare/flyguibyscorp/refs/heads/main/flyguibyscorp"))()
     end,
 })
-
 ScriptsTab:CreateButton({
     Name = "R4D Brookhaven",
     Callback = function()
         loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-R4D-Leak-12773"))()
     end,
 })
-
 ScriptsTab:CreateButton({
     Name = "BTools Script",
     Callback = function()
         loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-BTools-12430"))()
     end,
 })
-
--- Измененная кнопка
 ScriptsTab:CreateButton({
     Name = "Superman Hub",
     Callback = function()
         loadstring(game:HttpGet("https://rawscripts.net/raw/100M-VISITS-Ragdoll-Engine-System-Broken-Script-24937"))()
+    end,
+})
+ScriptsTab:CreateButton({
+    Name = "Admin commands",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end,
+})
+
+-- Добавление кнопки в Sounds
+SoundsTab:CreateButton({
+    Name = "Siren head sound",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scorpsoftare/sounddoa/refs/heads/main/sounddoa"))()
     end,
 })
